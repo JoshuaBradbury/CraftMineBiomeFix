@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "craftminebiomefix",
+	"version": "${version}",
+	"name": "CraftMineBiomeFix",
+	"description": "This mod fixes the biome tags not matching the generated biomes for the custom mines so structures and some unlocks will now work",
+	"authors": [
+		"JoshuaBradbury"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/craftminebiomefix/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"uk.co.newagedev.craftminebiomefix.CraftMineBiomeFix"
+		]
+	},
+	"mixins": [
+		"craftminebiomefix.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.11",
+		"minecraft": "1.21.6-alpha.25.14.craftmine",
+		"java": ">=21"
+	}
+}
