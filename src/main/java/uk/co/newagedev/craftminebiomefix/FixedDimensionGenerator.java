@@ -125,7 +125,7 @@ public class FixedDimensionGenerator {
 
         List<WorldGenBuilder.ModifiedBiome> modifiedBiomes = worldGenBuilder.createModifiedBiomes(theGame.registryAccess().lookupOrThrow(Registries.BIOME), resourceLocation.getPath());
         for (WorldGenBuilder.ModifiedBiome modifiedBiome : modifiedBiomes) {
-            arrayList.add(save(modifiedBiome.biome(), Biome.DIRECT_CODEC, registryOps, path2.resolve("worldgen").resolve("biome").resolve(modifiedBiome.modified().location().getPath() + ".json")));
+            arrayList.add(save(modifiedBiome.c(), Biome.DIRECT_CODEC, registryOps, path2.resolve("worldgen").resolve("biome").resolve(modifiedBiome.b().location().getPath() + ".json")));
         }
         Path dimensionPath = path2.resolve("dimension").resolve(resourceLocation.getPath() + ".json");
         arrayList.add(save(new FakeLevelStem(resourceKey, Optional.empty(), list, optional, worldGenBuilder.spawnStrategy()), FakeLevelStem.CODEC, registryOps, dimensionPath));
