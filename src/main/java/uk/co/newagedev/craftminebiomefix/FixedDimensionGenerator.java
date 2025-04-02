@@ -106,7 +106,6 @@ public class FixedDimensionGenerator {
                     HolderSet.Named<Biome> biomeSet = biomeTagOptional.get();
 
                     if (biomeSet.stream().map(Holder::unwrapKey).anyMatch(optionalKey -> optionalKey.isPresent() && optionalKey.get() == enabledBiome)) {
-                        LOGGER.info("TAG: {} contains biome {}", biomeTag, enabledBiome);
                         Path tagPath = path2.resolve("tags").resolve("worldgen").resolve("biome").resolve(biomeTag.location().getPath() + ".json");
 
                         if (!biomeTagsToWrite.containsKey(tagPath)) {
