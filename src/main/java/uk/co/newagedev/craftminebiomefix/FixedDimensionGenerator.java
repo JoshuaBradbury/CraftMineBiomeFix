@@ -125,7 +125,7 @@ public class FixedDimensionGenerator {
 
         List<WorldGenBuilder.ModifiedBiome> modifiedBiomes = worldGenBuilder.createModifiedBiomes(theGame.registryAccess().lookupOrThrow(Registries.BIOME), resourceLocation.getPath());
         for (WorldGenBuilder.ModifiedBiome modifiedBiome : modifiedBiomes) {
-            arrayList.add(save(modifiedBiome.c(), Biome.DIRECT_CODEC, registryOps, path2.resolve("worldgen").resolve("biome").resolve(modifiedBiome.b().location().getPath() + ".json")));
+            arrayList.add(save(modifiedBiome.biome(), Biome.DIRECT_CODEC, registryOps, path2.resolve("worldgen").resolve("biome").resolve(modifiedBiome.modified().location().getPath() + ".json")));
         }
         Path dimensionPath = path2.resolve("dimension").resolve(resourceLocation.getPath() + ".json");
         arrayList.add(save(new FakeLevelStem(resourceKey, Optional.empty(), list, optional, worldGenBuilder.spawnStrategy()), FakeLevelStem.CODEC, registryOps, dimensionPath));
@@ -163,7 +163,7 @@ public class FixedDimensionGenerator {
         public static final Codec<FakeLevelStem> CODEC = RecordCodecBuilder.create(instance -> instance.group(ResourceKey.codec(Registries.DIMENSION_TYPE).fieldOf("type").forGetter(FakeLevelStem::type), ChunkGenerator.CODEC.optionalFieldOf("generator").forGetter(FakeLevelStem::generator), WorldEffect.CODEC.listOf().fieldOf("effects").forGetter(FakeLevelStem::effects), SpecialMine.CODEC.optionalFieldOf("mine").forGetter(FakeLevelStem::mine), MineSpawnStrategy.CODEC.fieldOf("spawn").forGetter(FakeLevelStem::spawn)).apply(instance, FakeLevelStem::new));
     }
 
-    private static TagKey<Biome>[] ALL_BIOME_TAGS = new TagKey[]{
+    private static final TagKey<Biome>[] ALL_BIOME_TAGS = new TagKey[]{
             BiomeTags.IS_DEEP_OCEAN,
             BiomeTags.IS_OCEAN,
             BiomeTags.IS_BEACH,
